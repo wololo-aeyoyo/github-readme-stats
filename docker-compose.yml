@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      PAT_1: ${PAT_1:?PAT_1 is required}
+    restart: unless-stopped
